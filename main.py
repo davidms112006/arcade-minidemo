@@ -13,6 +13,7 @@ import random
 import arcade
 import when
 from arcade import draw_text
+from pycparser.ply.yacc import restart
 
 # --- Constants ---
 SPRITE_SCALING_PLAYER = 0.5
@@ -78,6 +79,11 @@ class MyGame(arcade.Window):
             # Add the coin to the lists
             self.coin_list.append(coin)
 
+
+
+
+
+
     def on_draw(self):
         """ Draw everything """
         self.clear()
@@ -91,6 +97,11 @@ class MyGame(arcade.Window):
         if self.score >= 400 :
             final = f'VICTORIA'
             arcade.draw_text(text=final, start_x=100, start_y=300,color=[0,0,0], font_size=100)
+            reinicio = 'Iniciando reinicio de juego'
+            arcade.draw_text(text=reinicio, start_x=250, start_y=200, color= arcade.color.ALABAMA_CRIMSON, font_size=20)
+
+
+
 
     def on_mouse_motion(self, x, y, dx, dy):
         """ Handle Mouse Motion """
