@@ -11,6 +11,8 @@ python -m arcade.examples.sprite_collect_coins
 
 import random
 import arcade
+import when
+from arcade import draw_text
 
 # --- Constants ---
 SPRITE_SCALING_PLAYER = 0.5
@@ -51,7 +53,7 @@ class MyGame(arcade.Window):
         self.coin_list = arcade.SpriteList()
 
         # Score
-        self.score = 0
+        self.score = -100
 
         # Set up the player
         # Character image from kenney.nl
@@ -86,6 +88,9 @@ class MyGame(arcade.Window):
         output = f"Score: {self.score}"
         arcade.draw_text(text=output, start_x=10, start_y=20,
                          color=arcade.color.WHITE, font_size=14)
+        if self.score >= 400 :
+            final = f'VICTORIA'
+            arcade.draw_text(text=final, start_x=100, start_y=300,color=[0,0,0], font_size=100)
 
     def on_mouse_motion(self, x, y, dx, dy):
         """ Handle Mouse Motion """
@@ -104,7 +109,10 @@ class MyGame(arcade.Window):
         # Loop through each colliding sprite, remove it, and add to the score.
         for coin in coins_hit_list:
             coin.remove_from_sprite_lists()
-            self.score += 1
+            self.score += 10
+
+
+
 
 
 def main():
